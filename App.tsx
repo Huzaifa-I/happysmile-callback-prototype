@@ -83,6 +83,17 @@ function Logo({ size = 44 }: { size?: number }) {
         <path className="hs-lg-star two" d="M13.500 44l.7 1.800 1.800.7-1.800.7-.7 1.800-.7-1.800-1.800-.7 1.800-.7z" fill="#e7c98f" />
     </svg>;
 }
+function VoiceBox({ name }: { name: string }) {
+    const [open, setOpen] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+    return <div className="hs-voice">
+        {!open ? <button type="button" className="hs-btn" onClick={() => setOpen(true)}>Or talk to Moli right now, in your browser</button> : <>
+            <iframe title="Talk to Moli, live voice demo" src={'https://happysmile-voice-preview.netlify.app/?embed=1&n=' + encodeURIComponent(name)} allow="microphone" onLoad={() => setLoaded(true)} />
+            {!loaded && <p className="hs-muted">Opening the voice demo...</p>}
+        </>}
+        <p className="hs-muted hs-voice-note">Live voice demo, sample data only. Needs a microphone and an internet connection. If it does not work on your device, nothing is lost: the call steps above continue as normal.</p>
+    </div>;
+}
 function Mascot({ className = '', mood = 'idle' }: { className?: string; mood?: 'idle' | 'calling' | 'happy' }) {
     const body = 'M64 52c15-14 36-2 56-2s41-12 56 2c27 22 24 64 12 98-7 20-9 38-14 56-4 12-10 14-16 4-7-12-9-28-16-35-6-6-15-6-22 0-7 7-9 23-16 35-6 10-12 8-16-4-5-18-7-36-14-56-12-34-15-76 12-98z';
     return <svg className={'hs-mascot hs-m-' + mood + ' ' + className} viewBox="0 0 240 270" role="img" aria-label="Moli, the HappySmile virtual assistant">
@@ -393,6 +404,7 @@ function Enquiry({ onNewLead, onGoStaff, leads, update }: { onNewLead: (l: Lead)
                     {!human && <div className="hs-bring"><b>Before your visit</b><ul><li>Bring any earlier dental records or X-rays if you have them.</li><li>Tell the team about any medicines you take or allergies you have.</li><li>You will get a reminder before your appointment.</li></ul></div>}
                 </>}
                 <ol className="hs-steps">{steps.map((s, i) => <li key={s} className={stage > i + 1 || (stage === 4 && i === 3) ? 'done' : stage === i + 1 ? 'now' : ''}><span />{s}</li>)}</ol>
+                <VoiceBox name={fn} />
                 <div className="hs-disc"><b>Moli is a virtual assistant, not a person.</b> If you would rather talk to someone, say "human" or tap the button. The team picks up with your details already on screen.</div>
                 <div className="hs-actions">
                     {stage < 4 && <button type="button" className="hs-btn ghost" onClick={() => setHuman(true)}>{human ? 'A person will take over' : 'Talk to a person instead'}</button>}
