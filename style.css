@@ -573,3 +573,6 @@ main{max-width:1180px;margin:0 auto;padding:clamp(20px,4vw,48px) clamp(16px,4vw,
 .hs-btn:not(.ghost):not(.outline):hover{filter:brightness(1.08);box-shadow:0 0 0 2px #e4c276,0 14px 26px -12px rgba(10,34,64,.75),inset 0 1px 0 rgba(255,255,255,.28)}
 .hs-btn:not(.ghost):not(.outline):active{box-shadow:0 0 0 2px #b88a3e,inset 0 2px 5px rgba(0,0,0,.35)}
 .hs-btn:not(.ghost):not(.outline):focus-visible{outline:3px solid rgba(228,194,118,.6);outline-offset:3px}
+
+.hs-voice{margin:2px 0 16px;text-align:left}.hs-voice iframe{display:block;width:100%;height:350px;border:1px solid var(--line,#d8e2ef);border-radius:16px;background:#fff}.hs-voice-note{font-size:12.5px;margin:8px 0 0}
+@media (max-width:480px){.hs-voice iframe{height:360px}}
