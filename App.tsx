@@ -37,11 +37,11 @@ const seed: Lead[] = [
     mk({ id: 1, name: 'Ananya R.', phone: '+91 98xxx 12034', treatment: 'Braces / aligners', clinic: 'Indiranagar', when: 'This weekend', status: 'booked', calledIn: '1 min 12 s', calledSecs: 72, received: '10:42', slot: 'Sat, 11:30 AM',
         answers: [{ q: 'Worn braces before?', a: 'Never' }, { q: 'What matters most?', a: 'A discreet look' }],
         summary: 'Wants aligners before a family wedding in March. Has not seen an orthodontist before. Consultation booked at Indiranagar.',
-        transcript: [{ who: 'AI', text: 'Hi Ananya, this is Moli, the HappySmile virtual assistant. You asked about braces a minute ago. Is now a good time?' }, { who: 'Patient', text: 'Yes, tell me about aligners.' }, { who: 'AI', text: 'A dentist will explain the options and cost at a consultation. Saturday 11:30 at Indiranagar is open. Shall I hold it?' }, { who: 'Patient', text: 'Yes please.' }] }),
+        transcript: [{ who: 'AI', text: `Hi Ananya, it's Moli, HappySmile's virtual assistant. You asked about braces a minute ago. Is now an okay time?` }, { who: 'Patient', text: 'Yes, tell me about aligners.' }, { who: 'AI', text: `The dentist goes through options and cost at a consultation, so I can't quote a price. Saturday 11:30 at Indiranagar is free. Shall I hold it?` }, { who: 'Patient', text: 'Yes please.' }] }),
     mk({ id: 2, name: 'Rahul M.', phone: '+91 99xxx 55810', treatment: 'Root canal', clinic: 'Koramangala', when: 'As soon as possible', status: 'staff', calledIn: '1 min 48 s', calledSecs: 108, received: '10:51', urgent: true, reason: 'Severe pain, asked for a person', wait: '4 min',
         answers: [{ q: 'Pain right now?', a: 'Severe or constant' }, { q: 'Swelling or fever?', a: 'No' }],
         summary: 'Severe tooth pain for two days. Asked to speak to someone who can see him today. A 4:00 PM slot is held and needs staff to confirm.',
-        transcript: [{ who: 'AI', text: 'Hi Rahul, this is Moli, the HappySmile virtual assistant. I can book you in, or connect you to our team.' }, { who: 'Patient', text: 'It really hurts. Can I talk to a person?' }, { who: 'AI', text: 'Of course. Connecting you to the Koramangala front desk now. I have shared a summary with them.' }] }),
+        transcript: [{ who: 'AI', text: `Hi Rahul, it's Moli, HappySmile's virtual assistant. I can book you in, or put you through to the team. Which would you like?` }, { who: 'Patient', text: 'It really hurts. Can I talk to a person?' }, { who: 'AI', text: `Of course. I'm putting you through to the Koramangala front desk now, and sending them a summary so you won't repeat yourself.` }] }),
     mk({ id: 3, name: 'Sneha K.', phone: '+91 97xxx 40921', treatment: 'Teeth cleaning', clinic: 'Andheri West', when: 'As soon as possible', status: 'booked', calledIn: '1 min 40 s', calledSecs: 100, received: '11:03', slot: 'Tomorrow, 6:00 PM', language: 'Hindi',
         answers: [{ q: 'Last check-up?', a: 'Over a year ago' }, { q: 'Sensitivity or bleeding?', a: 'No' }],
         summary: 'Routine cleaning, prefers calls in Hindi. Flexible on timing. Booked an evening slot at Andheri West.',
@@ -53,7 +53,7 @@ const seed: Lead[] = [
     mk({ id: 5, name: 'Meera P.', phone: '+91 96xxx 30277', treatment: 'Whitening', clinic: 'Indiranagar', when: 'As soon as possible', status: 'staff', calledIn: '1 min 05 s', calledSecs: 65, received: '11:14', reason: 'Asked about price and insurance', wait: '9 min',
         answers: [{ q: 'Sensitive teeth?', a: 'A little' }, { q: 'Preparing for an event?', a: 'Within a month' }],
         summary: 'Wanted an exact price and whether insurance covers whitening. That is outside what the assistant answers, so it handed her to staff with a note.',
-        transcript: [{ who: 'AI', text: 'Whitening starts with a consultation, where the dentist gives you a price.' }, { who: 'Patient', text: 'I need the exact cost and insurance first.' }, { who: 'AI', text: 'I will pass you to the team who can discuss that.' }] }),
+        transcript: [{ who: 'AI', text: `Whitening starts with a consultation, and the dentist gives you the price there.` }, { who: 'Patient', text: 'I need the exact cost and insurance first.' }, { who: 'AI', text: `I can't give you a price or talk about insurance, but the team can. I'm passing you to them now.` }] }),
     mk({ id: 6, name: 'Karthik N.', phone: '+91 98xxx 66120', treatment: 'Teeth cleaning', clinic: 'Koramangala', when: 'Tomorrow, 5:00 PM', status: 'scheduled', calledIn: 'Not yet called', received: '11:20', scheduledFor: 'Tomorrow, 5:00 PM',
         answers: [{ q: 'Last check-up?', a: '6 to 12 months' }, { q: 'Sensitivity or bleeding?', a: 'Bleeding gums' }],
         summary: 'Was in a meeting when he enquired and asked for a call tomorrow at 5:00 PM. Moli will call at that time.' }),
@@ -74,8 +74,13 @@ function Logo({ size = 44 }: { size?: number }) {
         <defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#2a78c8" /><stop offset="1" stopColor="#0a2540" /></linearGradient></defs>
         <rect width="64" height="64" rx="18" fill="url(#lg1)" />
         <path d="M32 12c-3.500-2.500-8-2-10.500.5-3.500 3.500-3 9 .5 14 1.500 2.200 2 4 2.500 8 .5 4.500 1.500 8 3.500 8 2 0 2-5.500 3-8 .5-1.200 1.200-1.800 1-1.800s.5.600 1 1.800c1 2.500 1 8 3 8 2 0 3-3.500 3.500-8 .5-4 1-5.800 2.500-8 3.500-5 4-10.500.5-14C40 10 35.500 9.500 32 12z" fill="#fff" />
-        <path d="M24.500 24c2.500 3.200 12.500 3.200 15 0" fill="none" stroke="#a9854f" strokeWidth="2.400" strokeLinecap="round" />
-        <path d="M49 11l1.100 2.900L53 15l-2.900 1.100L49 19l-1.100-2.900L45 15l2.900-1.100z" fill="#e7c98f" />
+        <g className="hs-lg-face">
+            <circle className="hs-lg-eye" cx="28" cy="21.500" r="1.700" fill="#0a2540" /><circle className="hs-lg-eye" cx="36" cy="21.500" r="1.700" fill="#0a2540" />
+            <circle cx="24.800" cy="26" r="2" fill="#f2a9a9" opacity=".55" /><circle cx="39.200" cy="26" r="2" fill="#f2a9a9" opacity=".55" />
+            <path className="hs-lg-smile" d="M27.500 26.200c1.200 3.600 7.800 3.600 9 0" fill="none" stroke="#0a2540" strokeWidth="1.900" strokeLinecap="round" />
+        </g>
+        <path className="hs-lg-star" d="M49 11l1.100 2.900L53 15l-2.900 1.100L49 19l-1.100-2.900L45 15l2.900-1.100z" fill="#e7c98f" />
+        <path className="hs-lg-star two" d="M13.500 44l.7 1.800 1.800.7-1.800.7-.7 1.800-.7-1.800-1.800-.7 1.800-.7z" fill="#e7c98f" />
     </svg>;
 }
 function Mascot({ className = '', mood = 'idle' }: { className?: string; mood?: 'idle' | 'calling' | 'happy' }) {
@@ -287,26 +292,26 @@ function Enquiry({ onNewLead, onGoStaff, leads, update }: { onNewLead: (l: Lead)
     const mood: 'idle' | 'calling' | 'happy' = stage === 0 ? 'idle' : stage >= 1 && stage < 4 ? 'calling' : 'happy';
     const today = isoDay(now);
     const bubble = stage === 0
-        ? step === 1 ? 'Hello, I am Moli. I will call you shortly, and I will always tell you I am an assistant. A member of our team is available whenever you would like to speak to a person.'
-        : step === 2 ? (nervous ? `Thank you for telling me, ${fn}. Feeling nervous is very common, and I will let the team know so they can be gentle.` : `Nice to meet you, ${fn}. A couple of quick questions help the dentist prepare, so you are not asked everything twice.`)
-        : urgent ? `${fn}, because of the pain you mentioned, I will connect you to a team member as soon as we speak.` : `Almost done, ${fn}. Choose the clinic that is easiest for you and when you would like the call.`
-        : stage < 4 ? `Dialling your number now, ${fn}. Please keep your phone nearby.`
-        : stage === 6 ? `Good news, ${fn}, you are already in our diary. Nothing more to arrange unless you would like a different time.`
-        : stage === 5 ? `All set, ${fn}. Your call is in the diary and I will ring you then.` : human ? (busy ? `${fn}, our team is busy for a moment. I am holding your slot and someone will call you within about 10 minutes, with your summary in front of them.` : `Of course, ${fn}. I am connecting you to the ${clinic} team now, and I have shared your summary so you will not need to repeat yourself.`) : `Lovely, ${fn}, that is all arranged. Thank you for choosing HappySmile.`;
+        ? step === 1 ? `Hi, I'm Moli, HappySmile's virtual assistant. Fill this in and I'll call you within two minutes to sort out a time. Prefer a person? Just say "human" on the call.`
+        : step === 2 ? (nervous ? `Thanks for telling me, ${fn}. Plenty of people feel that way. I'll pass it on so the team takes it slowly with you.` : `Nice to meet you, ${fn}. These two questions go to your dentist, so nobody has to ask you twice.`)
+        : urgent ? `${fn}, that sounds painful. When I call, I'll bring in a team member straight away.` : `Last bit, ${fn}. Pick the clinic nearest you, then a call right now or a time that works.`
+        : stage < 4 ? `Calling you now, ${fn}. Pick up when it rings. I'll check what you told us, then offer a time.`
+        : stage === 6 ? `${fn}, you already have an appointment for this, so I haven't booked a second one. Keep it, or change the time?`
+        : stage === 5 ? `Done, ${fn}. I'll ring you at the time you picked, and we'll book your appointment on that call.` : human ? (busy ? `${fn}, nobody on the team is free this second. I'm holding your slot. Someone will ring you in about 10 minutes and they'll already have your summary.` : `Sure, ${fn}. I'm putting you through to the ${clinic} team now. I've sent them your summary, so you won't have to repeat it.`) : `You're booked, ${fn}. Your time is above, and a reminder will come before your visit.`;
 
     return <section className="hs-enq">
         <div className="hs-hero">
-            <p className="hs-eyebrow">{stage === 0 && step > 1 ? `Hello, ${fn}` : 'Appointments at HappySmile'}</p>
-            <h1>{stage === 0 && step > 1 ? 'A little about your visit helps us prepare.' : 'Thoughtful dental care, starting with a call back in minutes.'}</h1>
-            <p className="hs-lead">{stage === 0 ? 'Three short steps. We will phone you within two minutes, or at a time you choose, and confirm your appointment on the call.' : (stage === 6 || stage === 7 ? 'We found your existing appointment, so we did not book a second one.' : 'Your request is with our team. You can watch each stage on the right.')}</p>
+            <p className="hs-eyebrow">{stage === 0 && step > 1 ? `Hello, ${fn}` : 'Book an appointment'}</p>
+            <h1>{stage === 0 && step > 1 ? 'A few details, so your dentist is ready for you.' : 'Your appointment, arranged in one short call.'}</h1>
+            <p className="hs-lead">{stage === 0 ? 'Tell us who you are and what you need. Moli, our virtual assistant, rings you within two minutes, or whenever suits you, and finds a time at your clinic. Nervous about the dentist? Say so, and the team will take it gently.' : (stage === 6 || stage === 7 ? 'We found your existing appointment, so we did not book a second one.' : 'Your request is with our team. You can watch each stage on the right.')}</p>
             <div className="hs-hero-art"><Mascot mood={mood} /><div className="hs-bubble"><b>Moli, virtual assistant</b>{bubble}</div></div>
-            <ul className="hs-expect" aria-label="What to expect"><li><b>One short form</b><span>Name, treatment and clinic. Under a minute.</span></li><li><b>A friendly call</b><span>Moli offers an available appointment.</span></li><li><b>A visit with no surprises</b><span>Your dentist explains options and cost first.</span></li></ul>
+            <ul className="hs-expect" aria-label="What to expect"><li><b>Tell us a little</b><span>Name, phone, treatment and clinic. About a minute.</span></li><li><b>Moli calls you</b><span>She confirms the details and offers the next free time.</span></li><li><b>See your dentist</b><span>Options and cost are explained before anything starts.</span></li></ul>
             <details className="hs-how2"><summary>How the call works <em>Design intent</em></summary>
                 <p className="hs-fine left">This describes how the service is designed to work. The call in this prototype is simulated.</p>
                 <dl>
-                    <dt>What Moli says</dt><dd>She gives her name, says she is a virtual assistant, confirms what you told us so you are not asked twice, then offers appointment times.</dd>
-                    <dt>When a person takes over</dt><dd>When you say "human" or ask for the team, when you report severe pain or swelling, or when Moli cannot answer (for example cost or insurance). She connects you on the same call and shares your summary. If nobody is free, she holds the slot, says the team will call within about 10 minutes, and the clinic sees you at the top of the queue.</dd>
-                    <dt>Booked without staff</dt><dd>When you say yes to an offered time on the call. This needs access to each clinic's live calendar, which is still to be confirmed.</dd>
+                    <dt>What Moli says</dt><dd>She tells you her name and that she is a virtual assistant. Then she repeats back what you told us, so you are not asked twice, and offers the next free times at your clinic.</dd>
+                    <dt>When a person takes over</dt><dd>Say "human", mention severe pain or swelling, or ask about cost or insurance, and she puts you through to the clinic team on the same call, with your summary. If nobody is free she holds your slot and the team rings you within about 10 minutes. You show up at the top of their queue.</dd>
+                    <dt>Booked without staff</dt><dd>If you say yes to a time she offers, it is booked on that call. This needs access to each clinic's live calendar, which is still to be confirmed.</dd>
                 </dl>
             </details>
         </div>
@@ -355,7 +360,7 @@ function Enquiry({ onNewLead, onGoStaff, leads, update }: { onNewLead: (l: Lead)
             </form> : stage === 6 && dup ? <div className="hs-confirm hs-dup" aria-live="polite">
                 <div className="hs-mascot-sm"><Mascot mood="idle" /></div>
                 <h2>You already have an appointment booked</h2>
-                <p className="hs-muted">Good news, {fn}. This number is already booked for this treatment, so there is nothing more to arrange.</p>
+                <p className="hs-muted">{fn}, this number already has an appointment for this treatment, so I have not booked another.</p>
                 <dl className="hs-dupfacts"><div><dt>Date and time</dt><dd>{dup.slot ?? dup.scheduledFor ?? instantSlot}</dd></div><div><dt>Clinic</dt><dd>HappySmile {dup.clinic}</dd></div><div><dt>Treatment</dt><dd>{dup.treatment}</dd></div></dl>
                 <div className="hs-ask"><b>Do you want to change the slot?</b>
                     <div className="hs-actions"><button type="button" className="hs-btn" onClick={changeSlot}>Yes, change it</button><button type="button" className="hs-btn ghost" onClick={keepSlot}>No, keep it</button></div></div>
@@ -364,31 +369,31 @@ function Enquiry({ onNewLead, onGoStaff, leads, update }: { onNewLead: (l: Lead)
                 <div className="hs-mascot-sm"><Mascot mood="happy" /></div>
                 <h2>{dupMsg === 'kept' ? 'Your appointment stays as it is' : dupMsg === 'changed' ? 'Your slot is updated' : 'A team member will call you'}</h2>
                 {dup && <p className="hs-slot">{dupMsg === 'changed' ? schedText : (dup.slot ?? dup.scheduledFor ?? instantSlot)} <i>HappySmile {dup.clinic} · {dup.treatment}</i></p>}
-                <p className="hs-muted">{dupMsg === 'kept' ? 'No changes were made, and no second booking was created. You will get a reminder before your visit.' : dupMsg === 'changed' ? 'Your earlier time is released and the clinic has been told. You will get a new reminder.' : 'They can see your existing appointment, so you will not need to explain it again.'}</p>
+                <p className="hs-muted">{dupMsg === 'kept' ? 'Nothing has changed and no second booking was made. A reminder will come before your visit.' : dupMsg === 'changed' ? 'Your old time is freed and the clinic has been told. You will get a new reminder.' : 'They can see your existing appointment, so you will not need to explain it.'}</p>
                 <div className="hs-actions"><button type="button" className="hs-btn" onClick={onGoStaff}>See what HappySmile sees</button><button type="button" className="hs-btn ghost" onClick={reset}>New enquiry</button></div>
             </div> : stage === 5 ? <div className="hs-confirm" aria-live="polite">
                 <div className="hs-mascot-sm"><Mascot mood="happy" /></div>
                 <h2>Your call is scheduled, {fn}</h2>
                 <p className="hs-slot">{schedText} <i>HappySmile {clinic} · {treatment}</i></p>
-                <p className="hs-muted">Moli will phone you in {lang}, from the verified HappySmile number. You can ask for a person at any point on the call.</p>
+                <p className="hs-muted">Moli will ring you in {lang} from the HappySmile number. If you would rather talk to a person, say "human" on the call.</p>
                 <ol className="hs-steps"><li className="done"><span />Call scheduled</li><li className="now"><span />Moli calls you at {schedText.split(', ').pop()}</li><li><span />Appointment confirmed on the call</li></ol>
                 <div className="hs-actions"><button type="button" className="hs-btn" onClick={onGoStaff}>See what HappySmile sees</button><button type="button" className="hs-btn ghost" onClick={reset}>New enquiry</button></div>
             </div> : <div className="hs-confirm" aria-live="polite">
                 <div className="hs-mascot-sm"><Mascot mood={mood} /></div>
                 {stage < 4 ? <>
                     <h2>Thank you, {fn}. Moli is calling you now.</h2>
-                    <p className="hs-muted">Please keep your phone nearby. The call will come from <b>+91 80 4000 0000</b>, the verified HappySmile number, in {lang}. Number shown is a sample.</p>
+                    <p className="hs-muted">Pick up when it rings. It will come from <b>+91 80 4000 0000</b> and Moli will speak {lang}. This number is a sample.</p>
                     <div className="hs-count"><b>{Math.floor(secs / 60)}:{String(secs % 60).padStart(2, '0')}</b><span>expected within, sped up for this preview</span></div>
                 </> : <>
                     <h2>{human ? (busy ? `${fn}, we are holding your slot` : `${fn}, our front desk is on the line`) : `You are booked in, ${fn}`}</h2>
                     {!human && <p className="hs-slot">{instantSlot} <i>HappySmile {clinic} · {treatment}</i></p>}
-                    {human && !busy && <p className="hs-muted">{urgent ? 'We marked your enquiry as urgent. ' : ''}Moli passed your call to the {clinic} team with a summary of your enquiry, so you will not need to repeat yourself.</p>}
-                    {human && busy && <><p className="hs-slot">{instantSlot} <i>Held for you at HappySmile {clinic}</i></p><p className="hs-muted">Our team is with other patients right now. {urgent ? 'Because you mentioned severe pain, your request is at the top of their list. ' : ''}A team member will call you within about 10 minutes and already has your summary.</p></>}
+                    {human && !busy && <p className="hs-muted">{urgent ? 'We have marked this as urgent. ' : ''}Moli has put you through to the {clinic} team and sent them your summary, so you will not need to explain again.</p>}
+                    {human && busy && <><p className="hs-slot">{instantSlot} <i>Held for you at HappySmile {clinic}</i></p><p className="hs-muted">The team is with other patients at the moment. {urgent ? 'Because of the pain you mentioned, you are first on their list. ' : ''}Someone will ring you in about 10 minutes and will already have your summary.</p></>}
                     {human && <div className="hs-preview" role="group" aria-label="Prototype preview control"><span>Prototype preview: front desk is</span><button type="button" className={!busy ? 'on' : ''} aria-pressed={!busy} onClick={() => setBusy(false)}>Free</button><button type="button" className={busy ? 'on' : ''} aria-pressed={busy} onClick={() => setBusy(true)}>Busy</button></div>}
                     {!human && <div className="hs-bring"><b>Before your visit</b><ul><li>Bring any earlier dental records or X-rays if you have them.</li><li>Tell the team about any medicines you take or allergies you have.</li><li>You will get a reminder before your appointment.</li></ul></div>}
                 </>}
                 <ol className="hs-steps">{steps.map((s, i) => <li key={s} className={stage > i + 1 || (stage === 4 && i === 3) ? 'done' : stage === i + 1 ? 'now' : ''}><span />{s}</li>)}</ol>
-                <div className="hs-disc"><b>Moli is a virtual assistant, not a person.</b> Say "human" or press the button at any time and a member of our team takes over with your details already in front of them.</div>
+                <div className="hs-disc"><b>Moli is a virtual assistant, not a person.</b> If you would rather talk to someone, say "human" or tap the button. The team picks up with your details already on screen.</div>
                 <div className="hs-actions">
                     {stage < 4 && <button type="button" className="hs-btn ghost" onClick={() => setHuman(true)}>{human ? 'A person will take over' : 'Talk to a person instead'}</button>}
                     {stage === 4 && <button type="button" className="hs-btn" onClick={onGoStaff}>See what HappySmile sees</button>}
@@ -402,7 +407,7 @@ function Enquiry({ onNewLead, onGoStaff, leads, update }: { onNewLead: (l: Lead)
 /* ---------------- Screen 2: clinic operations ---------------- */
 function nextAction(l: Lead): { tone: string; title: string; text: string } {
     if (l.resolved) return { tone: 'ok', title: 'All done', text: 'Staff took over and this enquiry is resolved. Nothing else is needed.' };
-    if (l.status === 'staff' && l.busy) return { tone: 'hot', title: 'Please call this patient now', text: 'No one was free when Moli tried to transfer the call. She is holding the slot and told the patient to expect a call within about 10 minutes. The summary below means you do not need to ask again.' };
+    if (l.status === 'staff' && l.busy) return { tone: 'hot', title: 'Please call this patient now', text: `Moli could not reach anyone to take the call. She is holding the slot and told the patient someone will ring within about 10 minutes. The summary below saves you asking again.` };
     if (l.status === 'staff') return { tone: l.urgent ? 'hot' : 'warn', title: l.urgent ? 'Please call this patient now' : 'Please call this patient next', text: `${l.reason ?? 'Handed over by Moli'}. The summary below means you do not need to ask again.` };
     if (l.status === 'noanswer') return { tone: 'warn', title: 'No action needed yet', text: 'Moli has texted and will retry. Step in only if you would like to.' };
     if (l.status === 'scheduled') return { tone: 'calm', title: 'Nothing to do for now', text: `Moli will call at ${l.scheduledFor}. You can call earlier if you prefer.` };
@@ -417,6 +422,8 @@ function Dashboard({ leads, update, focusId }: { leads: Lead[]; update: (id: num
     const [q, setQ] = useState('');
     const [openId, setOpenId] = useState<number | null>(focusId ?? 2);
     const [note, setNote] = useState('');
+    const [mob, setMob] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width:600px)').matches);
+    useEffect(() => { const m = window.matchMedia('(max-width:600px)'); const f = () => setMob(m.matches); m.addEventListener('change', f); return () => m.removeEventListener('change', f); }, []);
     const inClinic = (l: Lead) => clinic === 'All clinics' || l.clinic === clinic;
     const pool = leads.filter(inClinic);
     const rated = pool.filter((l) => l.status !== 'scheduled' && l.status !== 'calling');
@@ -429,6 +436,10 @@ function Dashboard({ leads, update, focusId }: { leads: Lead[]; update: (id: num
     const bookingRate = pct(booked.length, rated.length);
     const rank = (l: Lead) => (l.busy && l.status === 'staff' && !l.resolved ? -1 : l.urgent && l.status === 'staff' && !l.resolved ? 0 : l.status === 'staff' && !l.resolved ? 1 : l.live ? 2 : 3);
     const shown = pool.filter((l) => (filter === 'all' || l.status === filter) && (!q || (l.name + l.treatment + l.clinic).toLowerCase().includes(q.toLowerCase()))).sort((a, b) => rank(a) - rank(b));
+    const [more, setMore] = useState(false);
+    const LIMIT = 5;
+    const cut = mob && !more && shown.length > LIMIT + 1;
+    const listed = cut ? shown.slice(0, LIMIT) : shown;
     const open = leads.find((l) => l.id === openId) ?? null;
     const counts = (s: 'all' | Status) => (s === 'all' ? pool.length : pool.filter((l) => l.status === s).length);
     useEffect(() => { if (focusId) { setOpenId(focusId); setView('queue'); } }, [focusId]);
@@ -456,17 +467,18 @@ function Dashboard({ leads, update, focusId }: { leads: Lead[]; update: (id: num
 
         {view === 'queue' && <>
             <div className="hs-toolbar">
-                <div className="hs-tabs" role="tablist">{(['all', 'staff', 'scheduled', 'booked', 'noanswer'] as const).map((s) => <button key={s} role="tab" aria-selected={filter === s} className={filter === s ? 'on' : ''} onClick={() => setFilter(s)}>{s === 'all' ? 'All' : s === 'staff' ? 'Needs a person' : LABEL[s]} <em>{counts(s)}</em></button>)}</div>
-                <input className="hs-search" type="search" placeholder="Search name or treatment" aria-label="Search enquiries" value={q} onChange={(e) => setQ(e.target.value)} />
+                <div className="hs-tabs" role="tablist">{(['all', 'staff', 'scheduled', 'booked', 'noanswer'] as const).map((s) => <button key={s} role="tab" aria-selected={filter === s} className={filter === s ? 'on' : ''} onClick={() => { setFilter(s); setMore(false); }}>{s === 'all' ? 'All' : s === 'staff' ? 'Needs a person' : LABEL[s]} <em>{counts(s)}</em></button>)}</div>
+                <input className="hs-search" type="search" placeholder="Search name or treatment" aria-label="Search enquiries" value={q} onChange={(e) => { setQ(e.target.value); setMore(false); }} />
             </div>
             <div className="hs-split">
                 <ul className="hs-list">
                     {shown.length === 0 && <li className="hs-empty">Nothing matches. Try another filter, or clear the search.</li>}
-                    {shown.map((l) => <li key={l.id}><button type="button" className={'hs-row' + (l.id === openId ? ' on' : '') + ((l.urgent || l.busy) && l.status === 'staff' && !l.resolved ? ' urgent' : '')} onClick={() => { setOpenId(l.id); setNote(''); if (window.innerWidth < 900) window.setTimeout(() => document.querySelector('.hs-detail')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }), 60); }}>
+                    {listed.map((l) => <li key={l.id}><button type="button" className={'hs-row' + (l.id === openId ? ' on' : '') + ((l.urgent || l.busy) && l.status === 'staff' && !l.resolved ? ' urgent' : '')} onClick={() => { setOpenId(l.id); setNote(''); if (window.innerWidth < 900) window.setTimeout(() => document.querySelector('.hs-detail')?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }), 60); }}>
                         <span className="hs-av">{l.name[0]}</span>
                         <span className="hs-row-main"><b>{l.name}{l.live && <u>New</u>}{l.urgent && !(l.busy && !l.resolved) && <u className="u">Urgent</u>}{l.busy && !l.resolved && <u className="u">Call now</u>}{l.rescheduled && <u className="r">Rescheduled</u>}</b><i>{l.treatment} · {l.clinic}</i></span>
                         <span className="hs-row-end"><span className={'hs-pill ' + (l.resolved ? 'booked' : l.status)}>{l.resolved ? 'Resolved' : LABEL[l.status]}</span><i>{l.status === 'staff' && !l.resolved && l.wait ? `waiting ${l.wait}` : l.received}</i></span>
                     </button></li>)}
+                    {cut && <li><button type="button" className="hs-btn ghost" onClick={() => setMore(true)}>Show {shown.length - LIMIT} more enquiries</button></li>}
                 </ul>
                 <aside className="hs-detail" aria-live="polite">
                     {!open || !na ? <p className="hs-empty">Select an enquiry to see its summary.</p> : <>
@@ -482,7 +494,7 @@ function Dashboard({ leads, update, focusId }: { leads: Lead[]; update: (id: num
                             {open.slot && <div><dt>Appointment</dt><dd>{open.slot}</dd></div>}
                         </dl>
                         <h3>Summary</h3><p className="hs-sum">{open.summary}</p>
-                        {open.answers.length > 0 && <><h3>Patient's answers</h3><ul className="hs-ans">{open.answers.map((a) => <li key={a.q}><span>{a.q}</span><b>{a.a}</b></li>)}</ul></>}
+                        {open.answers.length > 0 && (mob ? <details className="hs-more" key={open.id}><summary>Patient's answers <em>{open.answers.length}</em></summary><ul className="hs-ans">{open.answers.map((a) => <li key={a.q}><span>{a.q}</span><b>{a.a}</b></li>)}</ul></details> : <><h3>Patient's answers</h3><ul className="hs-ans">{open.answers.map((a) => <li key={a.q}><span>{a.q}</span><b>{a.a}</b></li>)}</ul></>)}
                         {open.transcript.length > 0 && <details className="hs-callrec"><summary>Call record <em>{open.transcript.length} lines</em></summary><ul className="hs-tr">{open.transcript.map((t, i) => <li key={i} className={t.who === 'AI' ? 'ai' : ''}><b>{t.who === 'AI' ? 'Moli (assistant)' : 'Patient'}</b>{t.text}</li>)}</ul></details>}
                         {open.notes.length > 0 && <><h3>Team notes</h3><ul className="hs-notes">{open.notes.map((n, i) => <li key={i}>{n}</li>)}</ul></>}
                         <div className="hs-noteform"><input value={note} onChange={(e) => setNote(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && note.trim()) { update(open.id, { notes: [...open.notes, note.trim()] }); setNote(''); } }} placeholder="Add a note for your team" aria-label="Add a note" /><button type="button" className="hs-btn ghost small" disabled={!note.trim()} onClick={() => { update(open.id, { notes: [...open.notes, note.trim()] }); setNote(''); }}>Add</button></div>
@@ -529,8 +541,8 @@ export function App() {
         if ((l as any).__update) {
             const u = l as any;
             setLeads((ls) => ls.map((x) => x.id !== u.id ? x : u.human
-                ? { ...x, live: true, status: 'staff', calledIn: '1 min 30 s', calledSecs: 90, busy: !!u.busy, reason: u.busy ? 'Transfer failed because no staff were free. Slot held by Moli' : x.urgent ? 'Severe pain, patient asked for a person' : 'Patient asked to speak to a person', wait: '1 min', summary: `${x.name} asked for a person during the call. Wants ${x.treatment.toLowerCase()} at ${x.clinic}.${x.nervous ? ' Feels nervous about dental visits.' : ''} Slot ${u.slot} is held for confirmation.${u.busy ? ' No one was free at the time of transfer, so Moli promised a call within about 10 minutes.' : ''}`, transcript: [{ who: 'AI', text: `Hello ${firstName(x.name)}, this is Moli, the HappySmile virtual assistant.` }, { who: 'Patient', text: 'Can I talk to someone?' }, u.busy ? { who: 'AI', text: 'Our team is busy right now. I am holding your slot, and someone will call you within about 10 minutes.' } : { who: 'AI', text: 'Of course, connecting you to the front desk now with your details.' }] }
-                : { ...x, live: true, status: 'booked', calledIn: '1 min 34 s', calledSecs: 94, slot: u.slot, summary: `${x.name} enquired about ${x.treatment.toLowerCase()} at ${x.clinic}, preferring a call in ${x.language}.${x.nervous ? ' Feels nervous about dental visits, so a gentle approach is appreciated.' : ''} Booked ${u.slot}.`, transcript: [{ who: 'AI', text: `Hello ${firstName(x.name)}, this is Moli, the HappySmile virtual assistant, about your ${x.treatment.toLowerCase()} enquiry.` }, { who: 'Patient', text: `${u.slot} works.` }, { who: 'AI', text: `Booked at ${x.clinic}. You will get a reminder.` }] }));
+                ? { ...x, live: true, status: 'staff', calledIn: '1 min 30 s', calledSecs: 90, busy: !!u.busy, reason: u.busy ? 'Transfer failed because no staff were free. Slot held by Moli' : x.urgent ? 'Severe pain, patient asked for a person' : 'Patient asked to speak to a person', wait: '1 min', summary: `${x.name} asked for a person during the call. Wants ${x.treatment.toLowerCase()} at ${x.clinic}.${x.nervous ? ' Feels nervous about dental visits.' : ''} Slot ${u.slot} is held for confirmation.${u.busy ? ' No one was free at the time of transfer, so Moli promised a call within about 10 minutes.' : ''}`, transcript: [{ who: 'AI', text: `Hi ${firstName(x.name)}, it's Moli, HappySmile's virtual assistant.` }, { who: 'Patient', text: 'Can I talk to someone?' }, u.busy ? { who: 'AI', text: `Nobody on the team is free just now. I'm holding your slot, and someone will ring you in about 10 minutes.` } : { who: 'AI', text: `Of course. I'm putting you through to the front desk now, with your details.` }] }
+                : { ...x, live: true, status: 'booked', calledIn: '1 min 34 s', calledSecs: 94, slot: u.slot, summary: `${x.name} enquired about ${x.treatment.toLowerCase()} at ${x.clinic}, preferring a call in ${x.language}.${x.nervous ? ' Feels nervous about dental visits, so a gentle approach is appreciated.' : ''} Booked ${u.slot}.`, transcript: [{ who: 'AI', text: `Hi ${firstName(x.name)}, it's Moli, HappySmile's virtual assistant, about your ${x.treatment.toLowerCase()} enquiry.` }, { who: 'Patient', text: `${u.slot} works.` }, { who: 'AI', text: `That's booked at ${x.clinic}. A reminder will come before your visit.` }] }));
             setFocus(u.id);
             return u.id;
         }
